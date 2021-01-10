@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace ShoppingCart_core.Models
@@ -10,6 +11,22 @@ namespace ShoppingCart_core.Models
         public List<Product> findAll()
         {
             return testData();
+        }
+
+        public Product findFromID(string id)
+        {
+            var listProduct = findAll();
+
+            var product = listProduct.FirstOrDefault(x => x.Id == id);
+
+            if (product == null)
+            {
+                return null;
+            }
+            else
+            {
+                return product;
+            }
         }
 
         public List<Product> testData()
